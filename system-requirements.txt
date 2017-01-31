@@ -1,0 +1,16 @@
+nginx
+libffi-dev
+tiff-dev
+jpeg-dev
+openjpeg-dev
+libpng-dev
+zlib-dev
+freetype-dev
+lcms2-dev
+libwebp-dev
+ca-certificates
+python2
+python2-dev
+py-setuptools
+python-dev
+py-numpy

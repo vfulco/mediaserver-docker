@@ -1,0 +1,59 @@
+*.py[co]
+
+.idea
+
+.vagrant
+
+.idea
+
+# Packages
+*.egg
+*.egg-info
+.installed.cfg
+bin
+build
+develop-eggs
+eggs
+parts
+sdist
+var
+settings/local_settings.py
+media
+node_modules
+
+local_settings.py
+
+dev.db
+.DS_Store
+
+# Installer logs
+pip-log.txt
+*.log
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+#Mr Developer
+.mr.developer.cfg
+
+# Dev machine
+natgeo_dev.box
+node_modules
+bower_components
+.sass-cache
+.cache
+.env
+
+*.sql
+*.sql.gz
+staticmedia
+rcplayer/dist/*
+
+dump.rdb
+orignals
+modified
+
