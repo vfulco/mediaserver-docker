@@ -54,6 +54,6 @@ staticmedia
 rcplayer/dist/*
 
 dump.rdb
-orignals
-modified
+originals/*
+modified/*
 
