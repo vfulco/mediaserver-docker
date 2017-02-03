@@ -14,3 +14,12 @@ python2-dev
 py-setuptools
 python-dev
 py-numpy
+
+libcurl
+curl-dev
+libressl-dev
+automake
+autoconf
+fuse
+fuse-dev
+libxml2-dev

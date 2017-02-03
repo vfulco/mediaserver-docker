@@ -27,7 +27,19 @@ RUN echo \
   && easy_install pip \
   && pip install --upgrade pip \
   && if [[ ! -e /usr/bin/pip ]]; then ln -sf /usr/bin/pip2.7 /usr/bin/pip; fi \
+
   && echo
+
+# Compile the S3 Filesystem
+RUN echo \
+  && git clone https://github.com/s3fs-fuse/s3fs-fuse.git \
+  && cd s3fs-fuse \
+  && ./autogen.sh \
+  && ./configure --prefix=/usr \
+  && make \
+  && make install \
+  && cd .. \
+  && rm -rf s3fs-fuse
 
 # Chaining the ENV allows for only one layer, instead of one per ENV statement
 ENV HOMEDIR=/etc/transmogrify \
@@ -42,13 +54,13 @@ COPY requirements.txt $HOMEDIR/
 RUN pip install --upgrade pip \
   && pip install -r $HOMEDIR/requirements.txt
 
-# Project-specific settings
-ENV
-
-COPY nginx-conf/nginx.conf to /usr/local/nginx/conf/nginx.conf
+COPY nginx-conf/nginx.conf /etc/nginx/nginx.conf
 
 # Copy the code
 COPY . $HOMEDIR
-VOLUME $HOMEDIR/
+ENV TRANSMOGRIFY_SETTINGS=transmogrify_settings \
+    TRANSMOGRIFY_ORIG_BASE_PATH=$HOMEDIR/originals \
+    TRANSMOGRIFY_BASE_PATH=$HOMEDIR/modified
+RUN mkdir $HOMEDIR/originals $HOMEDIR/modified
 EXPOSE 8000
 CMD ["sh", "-c", "$HOMEDIR/docker-entrypoint.sh"]
