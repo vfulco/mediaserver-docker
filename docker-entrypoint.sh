@@ -1,8 +1,8 @@
 #!/bin/bash
-/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+/usr/sbin/nginx -c /etc/nginx/nginx.conf
 
-waitress_serve \
-    wsgi:application \
+waitress-serve \
     --port 8001 \
     --ident transmogrify \
+    wsgi:app \
     "$@"
