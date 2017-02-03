@@ -4,6 +4,8 @@ An nGinx front-end with transmogrify adding dynamic thumbnailing.
 
 Modified to handle storage from S3
 
+The ECS task definition must contain `AWSACCESSKEYID` and `AWSSECRETACCESSKEY`.
+
 ## Building instructions
 
 ```
@@ -18,13 +20,17 @@ $ docker tag ngs-mediaserver:latest ngs-mediaserver:1.2.3
 
 ## Running or testing the image
 
+In order to test the image with S3, you must create a `.env` file with
+`AWSACCESSKEYID` and `AWSSECRETACCESSKEY` set.
+
 ```
-docker run -ti \
-    -p 8000:8000 \
-    --add-host dockerhost:$DOCKERHOST \
-    --name ngs-container \
-    ngs:latest \
-    bash
+./docker-run.sh
+```
+
+If you want to  get to a shell (or run another command), add the command after:
+
+```
+./docker-run.sh bash
 ```
 
 ## system packages
